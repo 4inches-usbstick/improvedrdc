@@ -1,2 +1,4 @@
 # improvedrdc
-An old project brought back to life in the form a of an HTTP server.
+my third python server
+behind the transcoder and the voice calling relay
+still my favorite child
