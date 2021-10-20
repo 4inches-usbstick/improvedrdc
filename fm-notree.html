@@ -1,0 +1,29 @@
+<hr>
+<form action="fileio.dpy" id="form1" method="POST">
+    CMD   <input id='cmd' type="text" name="command"><br>
+    FPATH <input type="text" name="filepath" style='width: 800px'><br>
+	TEXT/BASE64<br>  <textarea id="b64" type="textarea" name="contents" style="width: 1162px; height: 340px;"></textarea><br>
+    <input type="submit" value="Issue command">
+</form>
+<hr>
+	<input type="file" name="myfile" id="field"><br>
+    <button onclick="var file = document.getElementById('field').files[0];getBase64(file);return null;">Prepare to transmit</button>
+
+<p>WARNING! This function may block execution on the same process until done. Watch your filesize.</p>
+<script>
+function getBase64(file) {
+   var reader = new FileReader();
+   reader.readAsDataURL(file);
+   reader.onload = function () {
+     console.log(reader.result);
+	 document.getElementById('b64').innerHTML = reader.result.split(',')[1]
+	 document.getElementById('cmd').value = 'writebinary';
+   };
+   reader.onerror = function (error) {
+     console.log('Error: ', error);
+	 	 document.getElementById('b64').innerHTML = error
+   };
+}
+
+
+</script>

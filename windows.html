@@ -1,0 +1,72 @@
+<style>
+p.white {
+	background-color: #FFFFFF;
+	white-space: pre;
+	padding: 10px;
+}
+
+p.black {
+	background-color: #000000;
+	white-space: pre;
+	padding: 10px;
+}
+</style>
+
+<body style='background-color: LightBlue;'>
+ <div class="absolute" style='border: 0px solid grey; font-size: 14px; left: 71px; top: 102px; position: absolute; background-color: #3b55cc;' id='div1' style='' onclick='toggle("div1")'>
+  <code style='color:white; '>id:DIV1</code>
+  <p class='white' id='insidediv1'>File Manager
+  </p>
+  <iframe style='background-color: #999999; '  width='1200' height='400' src='fm-notree.html'></iframe>
+  </div>
+  
+  
+   <div class="absolute" style='border: 0px solid grey; font-size: 14px; left: 71px; top: 102px; position: absolute; background-color: #3b55cc;' id='div2' style='' onclick='toggle("div2")'>
+  <code style='color:white; '>id:DIV2</code>
+  <p class='white' id='insidediv2'>Tree Walker
+  </p>
+  <iframe style='background-color: #999999; '  width='1200' height='200' src='treewalker.dpy?path=C:/'></iframe>
+  </div>
+  
+  
+     <div class="absolute" style='border: 0px solid grey; font-size: 14px; left: 71px; top: 102px; position: absolute; background-color: #3b55cc;' id='div3' style='' onclick='toggle("div3")'>
+  <code style='color:white; '>id:DIV3</code>
+  <p class='white' id='insidediv2'>Terminal
+  </p>
+  <iframe style='background-color: #999999; '  width='1200' height='200' src='terminal.html'></iframe>
+  </div>
+  
+  
+  </body>
+  
+
+<head>
+ <script type="text/javascript">   
+ function untoggle() {
+	window.selectedid = 'none';
+}
+  
+  function toggle(tovalue) {
+	if (window.selectedid == 'none') {
+		window.selectedid = tovalue;
+		console.log('SET')
+		document.getElementById(tovalue).style.background = 'black';
+	} else {
+		window.selectedid = 'none';
+		console.log('RESET')
+		document.getElementById(tovalue).style.background = '#3b55cc';
+	}
+}
+function plot(event) {
+	document.getElementById(window.selectedid).style.left = event.clientX - 10+'px'
+	document.getElementById(window.selectedid).style.top = event.clientY - 10+'px'
+	console.log('Moved to x='+event.clientX+' y='+event.clientY+' id='+window.selectedid)
+}
+
+document.body.addEventListener('mousemove', e => {
+plot(e);
+})</script>
+</head>
+
+
+ 
